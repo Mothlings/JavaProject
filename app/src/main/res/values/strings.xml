@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JavaProject</string>
+    <string name="title_activity_clock__resource">Clock_Resource</string>
+    <string name="tName">Name: </string>
+    <string name="tLevel">Level: </string>
+    <string name="tBindTime">Bind time: -</string>
+    <string name="tTimeleft">Time left: -</string>
+    <string name="tTimeUnbind">Unbind time: -</string>
+
+</resources>
