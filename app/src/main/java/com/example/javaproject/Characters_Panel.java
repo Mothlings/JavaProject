@@ -21,21 +21,21 @@ public class Characters_Panel extends AppCompatActivity implements View.OnClickL
     }
 
     public void Timer(){
-    if(isOn){
-        isOn=false;
-        Intent serviceIntent = new Intent(this, Timer_Service.class);
+        if(isOn){
+            isOn=false;
+            Intent serviceIntent = new Intent(this, Timer_Service.class);
 
-        bTimer.setText("Start timer");
+            bTimer.setText("Start timer");
 
-    }
-    else {
-        isOn = true;
-        Intent serviceIntent = new Intent(this, Timer_Service.class);
-        serviceIntent.putExtra("inputExtra", time);
-        ContextCompat.startForegroundService(this, serviceIntent);
+        }
+        else {
+            isOn = true;
+            Intent serviceIntent = new Intent(this, Timer_Service.class);
+            serviceIntent.putExtra("inputExtra", time);
+            ContextCompat.startForegroundService(this, serviceIntent);
 
-        bTimer.setText("Stop timer");
-    }
+            bTimer.setText("Stop timer");
+        }
     }
     public void onClick(View v) {
         switch (v.getId()) {

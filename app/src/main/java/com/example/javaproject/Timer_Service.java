@@ -49,7 +49,7 @@ public class Timer_Service extends Service {
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
 
-    //    mTextViewCountDown.setText(timeLeftFormatted);
+        //    mTextViewCountDown.setText(timeLeftFormatted);
     }
 
     private void resetTimer() {
@@ -67,7 +67,7 @@ public class Timer_Service extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
 
-       Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("PKT GO")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.ic_pkicon)

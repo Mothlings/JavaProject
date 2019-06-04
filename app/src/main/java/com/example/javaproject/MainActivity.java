@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener ,RecycleAdapter.OnItemListener{
     Button bClockSettings, bAddCharacter;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private ArrayList<Character> charList;
+
     App app;
     Character c;
 
@@ -23,10 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         app = (App) getApplication();
+        app = (App) getApplication();
         for (Character a:app.characters)
         {
-                c = a;
+            c = a;
         }
 
         bAddCharacter =(Button) findViewById(R.id.bAddCharacter);
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
 
-       mAdapter = new RecycleAdapter(app.characters);
+        mAdapter = new RecycleAdapter(app.characters, this);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -72,5 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        charList.get(position);
+        Intent j = new Intent(this, Characters_Panel.class);
+        startActivityForResult(j, 1);
     }
 }
