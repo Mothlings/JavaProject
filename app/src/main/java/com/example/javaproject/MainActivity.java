@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<Character> charList;
+    //private ArrayList<Character> charList;
 
     App app;
     Character c;
@@ -25,13 +25,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //charList = new ArrayList<Character>();
+         c = new Character();
         app = (App) getApplication();
-        for (Character a:app.characters)
+        /*
+        for (Character a:app.charList.characters)
         {
-            c = a;
-        }
+            c=a;
+            charList.add(c);
 
+        }*/
         bAddCharacter =(Button) findViewById(R.id.bAddCharacter);
         bClockSettings = (Button) findViewById(R.id.bClockSettings);
 
@@ -43,15 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
 
-        mAdapter = new RecycleAdapter(app.characters, this);
+        mAdapter = new RecycleAdapter(app.charList.characters, this);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
         Character kurc = new Character();
-        app.characters.add(kurc);
+        app.charList.characters.add(kurc);
 
-        app.characters.get(0);
+        //app.charList.characters.get(0);
     }
 
     public void SettingClock(){
@@ -77,9 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+
     @Override
     public void onItemClick(int position) {
-        charList.get(position);
+        app.idApp = app.charList.get(position).getId();
         Intent j = new Intent(this, Characters_Panel.class);
         startActivityForResult(j, 1);
     }
